@@ -1,0 +1,38 @@
+[
+    {
+        "model": "main.product",
+        "pk": 1,
+        "fields": {
+            "name": "Nike Air Force 1 Low Black Supreme",
+            "price": "650.00",
+            "image_url": "/images/sneaker1.svg"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 2,
+        "fields": {
+            "name": "Nike Air Force 1 Low Brown Supreme",
+            "price": "650.00",
+            "image_url": "/images/sneaker2.svg"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 3,
+        "fields": {
+            "name": "Nike Air Force 1 Low White Mickey",
+            "price": "550.00",
+            "image_url": "/images/sneaker3.svg"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 4,
+        "fields": {
+            "name": "Nike Air Force 1 Low Black Classic",
+            "price": "600.00",
+            "image_url": "/images/sneaker4.svg"
+        }
+    }
+]

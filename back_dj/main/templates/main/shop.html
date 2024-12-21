@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Shop - Sneakers</title>
+    {% load static %}
+    <link rel="stylesheet" href="../../static/css/shop.css">
+</head>
+
+<body>
+    <header>
+        <div class="header__container">
+            <span onclick="location.href='{% url 'index' %}'" class="logo">Sneaker</span>
+            <nav class="header__title">
+                <span onclick="location.href='{% url 'shop' %}'" class="title__shop">Shop</span>
+                <span class="title__products">Products</span>
+                <span onclick="location.href='{% url 'blog' %}'" class="title__blog">Blog</span>
+                <span onclick="location.href='{% url 'elements' %}'" class="title__elements">Elements</span>
+            </nav>
+            <div class="header__icons">
+                <img src="{% static 'images/loop.svg' %}" class="icons__loop">
+                <img src="{% static 'images/person.svg' %}" class="icons__person">
+                <img src="{% static 'images/heart.svg' %}" class="icons__heart">
+                <img src="{% static 'images/bag.svg' %}" class="icons__bag">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="shop__banner">
+            <img src="../../static/images/загрузка.jpg" alt="Shop Banner">
+            <div class="overlay">
+                <h1>Shop Our Sneakers</h1>
+                <p>Find the perfect pair for every occasion.</p>
+            </div>
+        </div>
+
+        <div class="shop__grid">
+            <div class="product__card">
+                <img src="../../static/images/sneaker1.svg" alt="Nike Air Force 1 Low Black Supreme">
+                <h2>Nike Air Force 1 Low Black Supreme</h2>
+                <p>$650</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+
+            <div class="product__card">
+                <img src="../../static/images/sneaker2.svg" alt="Nike Air Force 1 Low Brown Supreme">
+                <h2>Nike Air Force 1 Low Brown Supreme</h2>
+                <p>$650</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+
+            <div class="product__card">
+                <img src="../../static/images/sneaker3.svg" alt="Nike Air Force 1 Low White Mickey">
+                <h2>Nike Air Force 1 Low White Mickey</h2>
+                <p>$550</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+
+            <div class="product__card">
+                <img src="../../static/images/sneaker4.svg" alt="Nike Air Force 1 Low White Mickey">
+                <h2>Nike Air Force 1 Low White Mickey</h2>
+                <p>$550</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+
+            <div class="product__card">
+                <img src="../../static/images/sneaker1.svg" alt="Nike Air Force 1 Low Black Supreme"> <!--TODO-->
+                <h2>Nike Air Force 1 Low Black Supreme</h2>
+                <p>$650</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+
+            <div class="product__card">
+                <img src="../../static/images/sneaker2.svg" alt="Nike Air Force 1 Low Brown Supreme"> <!--TODO-->
+                <h2>Nike Air Force 1 Low Brown Supreme</h2>
+                <p>$650</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+
+            <div class="product__card">
+                <img src="../../static/images/sneaker3.svg" alt="Nike Air Force 1 Low White Mickey"> <!--TODO-->
+                <h2>Nike Air Force 1 Low White Mickey</h2>
+                <p>$550</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+
+            <div class="product__card">
+                <img src="../../static/images/sneaker4.svg" alt="Nike Air Force 1 Low White Mickey"> <!--TODO-->
+                <h2>Nike Air Force 1 Low White Mickey</h2>
+                <p>$550</p>
+                <button class="shop__button">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+    <script src="{% static 'js/shop.js' %}"></script>
+    <footer>
+        <p>&copy; 2024 Sneaker. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

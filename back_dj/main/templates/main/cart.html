@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header__container">
+            <span onclick="location.href='/'" class="logo">Sneaker</span>
+        </div>
+    </header>
+    <main>
+        <h1>Your Cart</h1>
+        <div class="cart__container"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sneaker. All rights reserved.</p>
+    </footer>
+    <script>
+        fetch('/cart/')
+            .then(response => response.json())
+            .then(items => {
+                const cartContainer = document.querySelector('.cart__container');
+                cartContainer.innerHTML = items.map(item => `
+                    <div>
+                        <h2>${item.name}</h2>
+                        <p>Price: $${item.price}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                    </div>
+                `).join('');
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sneakers shop</title>
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="../../static/css/main.css">
+    <script src="../../static/js/index.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header__container">
+            <span onclick="location.href='{% url 'index' %}'" class="logo">Sneaker</span>
+            <nav class="header__title">
+                <span onclick="location.href='{% url 'shop' %}'" class="title__shop">Shop</span>
+                <span class="title__products">Products</span>
+                <span onclick="location.href='{% url 'blog' %}'" class="title__blog">Blog</span>
+                <span onclick="location.href='{% url 'elements' %}'" class="title__elements">Elements</span>
+            </nav>
+            <div class="header__icons">
+                <img src="{% static 'images/loop.svg' %}" class="icons__loop">
+                <img src="{% static 'images/person.svg' %}" class="icons__person">
+                <img src="{% static 'images/heart.svg' %}" class="icons__heart">
+                <img src="{% static 'images/bag.svg' %}" class="icons__bag">
+            </div>
+        </div>
+    </header>
+
+
+    <div class="banner__container">
+        <div class="banner__text">
+            <span class="banner__collection">Sneaker Collection</span>
+            <span class="banner__phrase">
+                Good shoes
+                take you
+                good places
+            </span>
+            <button onclick="location.href='{% url 'shop' %}'" class="banner__shop">Shop now</button>
+        </div>
+    </div>
+
+    <div class="shoes__block">
+        <!-- <img src="../images/Mask Group of Shoes.png" class="shoes__image">
+        <img src="../images/Shoes Shadow.png" class="shoes__shadow">
+        <img src="../images/shoes block.png" class="shoes"> -->
+
+        <div class="shoes__block">
+            <button class="shoes__arrow left-arrow" onclick="prevImage()">&#8592;</button>
+            <img id="shoesImage" src="../../static/images/shoes%20block.png" class="shoes">
+            <button class="shoes__arrow right-arrow" onclick="nextImage()">&#8594;</button>
+        </div>
+                
+    </div>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__logo">
+                <span class="logo">Sneaker</span>
+            </div>
+            <div class="footer__section">
+                <h3>Rewards Program</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Join the Club</a></li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h3>Shipping & Returns</h3>
+                <ul>
+                    <li><a href="#">Order & Payment</a></li>
+                    <li><a href="#">All About Shipping</a></li>
+                    <li><a href="#">Track Your Order</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h3>Customer Support</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Stores</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer__social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="../../static/images/TikTok_white.png" alt="TikTok"></a>
+                    <a href="#"><img src="../../static/images/VK_white.png" alt="VK"></a>
+                    <a href="#"><img src="../../static/images/Telegram_white.png" alt="Telegram"></a>
+                </div>
+                <p><strong>+7(800)555-35-35</strong></p>
+                <p>10 AM - 7 PM</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>

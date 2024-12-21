@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sneakers</title>
+    <link rel="stylesheet" href="../../../static/css/shop.css">
+</head>
+
+<body>
+    <header>
+        <div class="header__container">
+            <span onclick="location.href='index.html'" class="logo">Sneaker</span>
+            <nav class="header__title">
+                <span onclick="location.href='shop.html'" class="title__shop">Shop</span>
+                <span onclick="" class="title__products">Products</span>
+                <span onclick="location.href='blog.html'" class="title__blog">Blog</span>
+                <span onclick="" class="title__elements">Elements</span>
+            </nav>
+            <div class="header__icons">
+                <img src="../../../static/images/loop.svg" class="icons__loop">
+                <img src="../../../static/images/person.svg" class="icons__person">
+                <img src="../../../static/images/heart.svg" class="icons__heart">
+                <img src="../../../static/images/bag.svg" class="icons__bag">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="register__banner">
+            <img src="../images/register-banner.jpg" alt="Register Banner">
+            <div class="overlay">
+                <h1>Create Your Account</h1>
+                <p>Join our community and start your journey with Sneakers today!</p>
+            </div>
+        </div>
+
+        <div class="register__form-container">
+            <form id="registerForm" class="register__form">
+                <h2>Sign Up</h2>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+
+                <button type="submit" class="shop__button">Register</button>
+                <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sneaker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // js
+    </script>
+</body>
+
+</html>
