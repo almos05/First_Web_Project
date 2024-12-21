@@ -91,3 +91,11 @@ def add_to_cart(request):
 @login_required
 def cart_page(request):
     return render(request, 'main/cart.html')
+
+from django.http import HttpResponse
+
+def test_login(request):
+    if request.user.is_authenticated:
+        return HttpResponse(f"Logged in as {request.user.username}")
+    else:
+        return HttpResponse("Not logged in")

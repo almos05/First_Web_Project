@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
-    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="../../static/css/main.css">
 </head>
 <body>
     <header>
         <div class="header__container">
-            <span onclick="location.href='/'" class="logo">Sneaker</span>
+            <span onclick="location.href='{% url 'index' %}'" class="logo">Sneaker</span>
+            <nav class="header__title">
+                <span onclick="location.href='{% url 'shop' %}'" class="title__shop">Shop</span>
+                <span onclick="location.href='{% url 'blog' %}'" class="title__blog">Blog</span>
+                <span onclick="location.href='{% url 'elements' %}'" class="title__elements">Elements</span>
+            </nav>
+            <div class="header__icons">
+                <img src="{% static 'images/person.svg' %}" class="icons__person" onclick="location.href='{% url 'register' %}'">
+                <img src="{% static 'images/bag.svg' %}" class="icons__bag" onclick="location.href='{% url 'cart_page' %}'">
+            </div>
         </div>
     </header>
     <main>

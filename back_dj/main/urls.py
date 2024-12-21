@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, shop, blog, elements, register, login_view, product_list, cart_view, add_to_cart, cart_page
+from .views import index, shop, blog, elements, register, login_view, product_list, cart_view, add_to_cart, cart_page, test_login
 
 urlpatterns = [
     path('', index, name='index'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('cart/', cart_view, name='cart_view'),
     path('cart/add/', add_to_cart, name='add_to_cart'),
     path('cart/page/', cart_page, name='cart_page'),
+    path('test-login/', test_login), # TODO убрать после теста
 ]

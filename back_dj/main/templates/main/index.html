@@ -7,7 +7,28 @@
     <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
     {% load static %}
     <link rel="stylesheet" href="../../static/css/main.css">
-    <script src="../../static/js/index.js"></script>
+    <script>
+        const images = [
+            "{% static 'images/shoes block.png' %}",
+            "{% static 'images/supremeBoots.png' %}"
+        ];
+        let index = 0;
+
+        function prevImage() {
+            index = (index - 1 + images.length) % images.length;
+            updateImage();
+        }
+
+        function nextImage() {
+            index = (index + 1) % images.length;
+            updateImage();
+        }
+
+        function updateImage() {
+            let imageElement = document.getElementById("shoesImage");
+            imageElement.src = images[index];
+        }
+    </script>
 </head>
 
 <body>
@@ -16,15 +37,12 @@
             <span onclick="location.href='{% url 'index' %}'" class="logo">Sneaker</span>
             <nav class="header__title">
                 <span onclick="location.href='{% url 'shop' %}'" class="title__shop">Shop</span>
-                <span class="title__products">Products</span>
                 <span onclick="location.href='{% url 'blog' %}'" class="title__blog">Blog</span>
                 <span onclick="location.href='{% url 'elements' %}'" class="title__elements">Elements</span>
             </nav>
             <div class="header__icons">
-                <img src="{% static 'images/loop.svg' %}" class="icons__loop">
-                <img src="{% static 'images/person.svg' %}" class="icons__person">
-                <img src="{% static 'images/heart.svg' %}" class="icons__heart">
-                <img src="{% static 'images/bag.svg' %}" class="icons__bag">
+                <img src="{% static 'images/person.svg' %}" class="icons__person" onclick="location.href='{% url 'register' %}'">
+                <img src="{% static 'images/bag.svg' %}" class="icons__bag" onclick="location.href='{% url 'cart_page' %}'">
             </div>
         </div>
     </header>

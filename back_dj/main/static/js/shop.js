@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const productContainer = document.querySelector(".shop__grid");
-    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const csrftoken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 
     fetch("/api/products/")
         .then((response) => response.json())

@@ -15,22 +15,19 @@
             <span onclick="location.href='{% url 'index' %}'" class="logo">Sneaker</span>
             <nav class="header__title">
                 <span onclick="location.href='{% url 'shop' %}'" class="title__shop">Shop</span>
-                <span class="title__products">Products</span>
                 <span onclick="location.href='{% url 'blog' %}'" class="title__blog">Blog</span>
                 <span onclick="location.href='{% url 'elements' %}'" class="title__elements">Elements</span>
             </nav>
             <div class="header__icons">
-                <img src="{% static 'images/loop.svg' %}" class="icons__loop">
-                <img src="{% static 'images/person.svg' %}" class="icons__person">
-                <img src="{% static 'images/heart.svg' %}" class="icons__heart">
-                <img src="{% static 'images/bag.svg' %}" class="icons__bag">
+                <img src="{% static 'images/person.svg' %}" class="icons__person" onclick="location.href='{% url 'register' %}'">
+                <img src="{% static 'images/bag.svg' %}" class="icons__bag" onclick="location.href='{% url 'cart_page' %}'">
             </div>
         </div>
     </header>
 
     <main>
         <div class="shop__banner">
-            <img src="../images/blog-banner.jpg" alt="Elements Banner">
+            <img src="{% static 'images/ui_banner.jpg' %}" alt="Elements Banner">
             <div class="overlay">
                 <h1>UI Elements</h1>
                 <p>Explore and test reusable components.</p>
