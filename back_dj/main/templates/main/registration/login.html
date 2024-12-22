@@ -3,29 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/static/css/shop.css">
+    <title>Login - Sneakers</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
 </head>
 <body>
     <header>
-        <h1>Login</h1>
+        <div class="header__container">
+            <span onclick="location.href='{% url 'index' %}'" class="logo">Sneaker</span>
+            <nav class="header__title">
+                <span onclick="location.href='{% url 'shop' %}'" class="title__shop">Shop</span>
+                <span onclick="location.href='{% url 'blog' %}'" class="title__blog">Blog</span>
+                <span onclick="location.href='{% url 'elements' %}'" class="title__elements">Elements</span>
+            </nav>
+            <div class="header__icons">
+                <img src="{% static 'images/person.svg' %}" class="icons__person" onclick="location.href='{% url 'register' %}'">
+                <img src="{% static 'images/bag.svg' %}" class="icons__bag" onclick="location.href='{% url 'cart_page' %}'">
+            </div>
+        </div>
     </header>
+
     <main>
-        <form method="post">
-            {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
+        <div class="shop__banner">
+            <img src="{% static 'images/welcome_banner.jpg' %}" alt="Login Banner">
+            <div class="overlay">
+                <h1>Welcome Back!</h1>
+                <p>Log in to continue your journey with Sneakers.</p>
+            </div>
+        </div>
 
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
+        <div class="shop__grid">
+            <div class="elements__section">
+                <h2>Login</h2>
+                <form id="loginForm" class="register__form" method="post">
+                    {% csrf_token %}
+                    <div class="form__group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" class="input__field" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="input__field" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="shop__button">Login</button>
+                </form>
 
-        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+                <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+            </div>
+        </div>
     </main>
+
+    <footer>
+        <p>&copy; 2024 Sneaker. All rights reserved.</p>
+    </footer>
 </body>
 </html>

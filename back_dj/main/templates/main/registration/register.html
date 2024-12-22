@@ -37,7 +37,8 @@
         <div class="shop__grid">
             <div class="elements__section">
                 <h2>Sign Up</h2>
-                <form id="registerForm" class="register__form">
+                <form id="registerForm" class="register__form" method="POST">
+                    {% csrf_token %}
                     <div class="form__group">
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" class="input__field" placeholder="Enter your username" required>
@@ -56,6 +57,7 @@
                     </div>
                     <button type="submit" class="shop__button">Register</button>
                 </form>
+
                 <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
             </div>
         </div>
