@@ -15,7 +15,8 @@ def index(request):
 
 # Магазин
 def shop(request):
-    return render(request, 'main/shop.html')
+    products = Product.objects.all()
+    return render(request, 'main/shop.html', {'products': products})
 
 # Блог
 def blog(request):
@@ -73,7 +74,6 @@ def cart_view(request):
              for item in cart.items.all()]
     return JsonResponse(items, safe=False)
 
-@csrf_exempt
 @login_required
 def add_to_cart(request):
     if request.method == "POST":
