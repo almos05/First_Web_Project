@@ -41,64 +41,14 @@
                     <img src="{% static product.image_url %}" alt="{{ product.name }}">
                     <h2>{{ product.name }}</h2>
                     <p>${{ product.price }}</p>
-                    <button class="shop__button">Add to Cart</button>
+                    <form method="POST" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="shop__button">Add to Cart</button>
+                    </form>
                 </div>
             {% endfor %}
-{#            <div class="product__card">#} {# TODO все должно быть динамичным #}
-{#                <img src="../../static/images/sneaker1.svg" alt="Nike Air Force 1 Low Black Supreme">#}
-{#                <h2>Nike Air Force 1 Low Black Supreme</h2>#}
-{#                <p>$650</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
-{##}
-{#            <div class="product__card">#}
-{#                <img src="../../static/images/sneaker2.svg" alt="Nike Air Force 1 Low Brown Supreme">#}
-{#                <h2>Nike Air Force 1 Low Brown Supreme</h2>#}
-{#                <p>$650</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
-{##}
-{#            <div class="product__card">#}
-{#                <img src="../../static/images/sneaker3.svg" alt="Nike Air Force 1 Low White Mickey">#}
-{#                <h2>Nike Air Force 1 Low White Mickey</h2>#}
-{#                <p>$550</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
-{##}
-{#            <div class="product__card">#}
-{#                <img src="../../static/images/sneaker4.svg" alt="Nike Air Force 1 Low White Mickey">#}
-{#                <h2>Nike Air Force 1 Low White Mickey</h2>#}
-{#                <p>$550</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
-{##}
-{#            <div class="product__card">#}
-{#                <img src="../../static/images/sneaker1.svg" alt="Nike Air Force 1 Low Black Supreme"> <!--TODO-->#}
-{#                <h2>Nike Air Force 1 Low Black Supreme</h2>#}
-{#                <p>$650</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
-{##}
-{#            <div class="product__card">#}
-{#                <img src="../../static/images/sneaker2.svg" alt="Nike Air Force 1 Low Brown Supreme"> <!--TODO-->#}
-{#                <h2>Nike Air Force 1 Low Brown Supreme</h2>#}
-{#                <p>$650</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
-{##}
-{#            <div class="product__card">#}
-{#                <img src="../../static/images/sneaker3.svg" alt="Nike Air Force 1 Low White Mickey"> <!--TODO-->#}
-{#                <h2>Nike Air Force 1 Low White Mickey</h2>#}
-{#                <p>$550</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
-{##}
-{#            <div class="product__card">#}
-{#                <img src="../../static/images/sneaker4.svg" alt="Nike Air Force 1 Low White Mickey"> <!--TODO-->#}
-{#                <h2>Nike Air Force 1 Low White Mickey</h2>#}
-{#                <p>$550</p>#}
-{#                <button class="shop__button">Add to Cart</button>#}
-{#            </div>#}
         </div>
     </main>
     <footer>

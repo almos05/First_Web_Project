@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -74,23 +73,51 @@ def cart_view(request):
              for item in cart.items.all()]
     return JsonResponse(items, safe=False)
 
+from django.shortcuts import redirect
+
 @login_required
 def add_to_cart(request):
     if request.method == "POST":
-        data = json.loads(request.body)
-        product_id = data.get("product_id")
-        quantity = data.get("quantity", 1)
+        product_id = request.POST.get("product_id")
+        quantity = int(request.POST.get("quantity", 1))
         product = get_object_or_404(Product, id=product_id)
         cart, _ = Cart.objects.get_or_create(user=request.user)
         cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
         if not created:
             cart_item.quantity += quantity
         cart_item.save()
-        return JsonResponse({"success": True})
+
+        messages.success(request, f"{product.name} добавлен в корзину!")
+        return redirect("shop")
+    else:
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+
+
+@login_required
+def remove_from_cart(request, item_id):
+    cart, _ = Cart.objects.get_or_create(user=request.user)
+    cart_item = CartItem.objects.get(id=item_id, cart=cart)
+
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+        messages.success(request, f"One item removed from {cart_item.product.name} in your cart.")
+    else:
+        cart_item.delete()
+        messages.success(request, f"{cart_item.product.name} has been removed from your cart.")
+
+    return redirect("cart_page")
+
 
 @login_required
 def cart_page(request):
-    return render(request, 'main/cart.html')
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart_items = CartItem.objects.filter(cart=cart)
+    context = {
+        "cart_items": cart_items,
+    }
+    return render(request, "main/cart.html", context)
+
 
 from django.http import HttpResponse
 

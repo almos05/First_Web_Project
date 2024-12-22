@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
     {% load static %}
-    <link rel="stylesheet" href="../../static/css/main.css">
+    <link rel="stylesheet" href="../../static/css/shop.css">
 </head>
+
 <body>
     <header>
         <div class="header__container">
@@ -21,26 +24,40 @@
             </div>
         </div>
     </header>
-    <main>
-        <h1>Your Cart</h1>
-        <div class="cart__container"></div>
+
+    <main class="cart-page">
+        <div class="cart-container">
+            {% if cart_items %}
+                <div class="shop__grid">
+                    {% for item in cart_items %}
+                        <div class="product__card">
+                            <img src="{% static item.product.image_url %}" alt="{{ item.product.name }}">
+                            <h2>{{ item.product.name }}</h2>
+                            <p>${{ item.product.price }}</p>
+                            <p>Quantity: {{ item.quantity }}</p>
+                            <form action="{% url 'remove_from_cart' item.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="shop__button">Remove</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-cart">
+                    <h2>Your cart is empty.</h2>
+                    <p>Looks like you haven't added anything to your cart yet.</p>
+                    <form action="{% url 'shop' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="shop__button">Start Shopping</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
     </main>
+
     <footer>
         <p>&copy; 2024 Sneaker. All rights reserved.</p>
     </footer>
-    <script>
-        fetch('/cart/')
-            .then(response => response.json())
-            .then(items => {
-                const cartContainer = document.querySelector('.cart__container');
-                cartContainer.innerHTML = items.map(item => `
-                    <div>
-                        <h2>${item.name}</h2>
-                        <p>Price: $${item.price}</p>
-                        <p>Quantity: ${item.quantity}</p>
-                    </div>
-                `).join('');
-            });
-    </script>
 </body>
+
 </html>
