@@ -8,6 +8,19 @@
     <title>Shop - Sneakers</title>
     {% load static %}
     <link rel="stylesheet" href="../../static/css/shop.css">
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const scrollPosition = localStorage.getItem("scrollPosition");
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition, 10));
+            localStorage.removeItem("scrollPosition");
+        }
+
+        window.addEventListener("beforeunload", () => {
+            localStorage.setItem("scrollPosition", window.scrollY);
+        });
+    });
+    </script>
 </head>
 
 <body>
