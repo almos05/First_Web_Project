@@ -3,8 +3,8 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
 import json
 from .models import Product, Cart, CartItem
 
@@ -25,8 +25,11 @@ def blog(request):
 def elements(request):
     return render(request, 'main/elements.html')
 
-# Регистрация
+
 def register(request):
+    if request.user.is_authenticated:
+        return render(request, 'main/registration/register.html', {"user_authenticated": True, "user": request.user})
+
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -45,7 +48,8 @@ def register(request):
         login(request, user)
         return JsonResponse({"success": True, "message": "Registration successful!"})
 
-    return render(request, 'main/registration/register.html')
+    return render(request, 'main/registration/register.html', {"user_authenticated": False})
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -119,7 +123,10 @@ def cart_page(request):
     return render(request, "main/cart.html", context)
 
 
-from django.http import HttpResponse
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
 
 def test_login(request):
     if request.user.is_authenticated:
